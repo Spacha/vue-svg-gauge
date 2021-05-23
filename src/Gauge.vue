@@ -10,7 +10,7 @@
         <filter :id="`innershadow-${_uid}`">
           <feFlood flood-color="#c7c6c6" />
           <feComposite in2="SourceAlpha" operator="out" />
-          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feGaussianBlur v-if="innerShadow" stdDeviation="2" result="blur" />
           <feComposite operator="atop" in2="SourceGraphic" />
         </filter>
 
@@ -240,6 +240,14 @@
       baseColor: {
         type: String,
         default: '#DDDDDD',
+      },
+
+      /**
+       * If true, the inner shadow is drawn.
+       */
+      innerShadow: {
+        type: Boolean,
+        default: true,
       },
       /**
        * Animation easing option
